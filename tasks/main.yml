@@ -1,0 +1,24 @@
+---
+
+- name: "adding environment variable(s) on top of crontabs if activated ..."
+  cron:
+    name: "{{ item.env_name }}"
+    user: "{{ item.user }}"
+    env: "{{ item.env }}"
+    value: "{{ item.env_value }}"
+    cron_file: "{{ item.cron_file }}"
+  with_items: "{{ crontabs }}"
+  when: item.env is defined and item.env == 'yes'
+  become: yes
+
+- name: "setting up crontabs ..."
+  cron:
+    name: "{{ item.cron_name }}"
+    weekday: "{{ item.weekday }}"
+    minute: "{{ item.minute }}"
+    hour: "{{ item.hour }}"
+    user: "{{ item.user }}"
+    job: "{{ item.job }}"
+    cron_file: "{{ item.cron_file }}"
+  with_items: "{{ crontabs }}"
+  become: yes

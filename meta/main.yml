@@ -1,0 +1,29 @@
+galaxy_info:
+
+  author: klems
+
+  description: A role to setup crontabs
+
+  company: Neonoïa
+
+  license: BSD
+
+  min_ansible_version: 2.4
+
+  platforms:
+  - name: Debian
+    versions:
+    - wheezy
+    - jessie
+    - stretch
+  - name: Ubuntu
+    versions:
+    - trusty
+    - xenial
+
+  galaxy_tags:
+    - linux
+    - system
+    - crontab
+
+dependencies: []
